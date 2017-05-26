@@ -34,7 +34,7 @@ javascript: (function() {
      * nodes, looking for the specified subclass.
      */
     function findSubClass(element, className) {
-        "use strict";
+        'use strict';
         if (!element) {
             return null;
         }
@@ -44,7 +44,7 @@ javascript: (function() {
         function recurse(element, className, found) {
             for (var i = 0; i < element.childNodes.length && !found; i++) {
                 var el = element.childNodes[i];
-                var classes = el.className != undefined ? el.className.split(" ") : [];
+                var classes = el.className != undefined ? el.className.split(' ') : [];
                 for (var j = 0, jl = classes.length; j < jl; j++) {
                     if (classes[j] == className) {
                         found = true;
@@ -95,27 +95,27 @@ javascript: (function() {
             if (textElement) {
                 var inviteName = textElement.innerText.trim() || textElement.textContent.trim();
 
-                if (debug) { console.log("Invite Name " + inviteName); }
+                if (debug) { console.log('Invite Name ' + inviteName); }
                 var peopleOnline = document.getElementsByClassName(chatWholeElement);
                 for (var j = 0; j < peopleOnline.length; j++) {
                     element = peopleOnline[j];
                     var messageName = element.innerText.trim() || element.textContent.trim();
-                    if (debug) { console.log("Message Name " + messageName); }
+                    if (debug) { console.log('Message Name ' + messageName); }
                     if (messageName === inviteName) {
-                        if (debug) { console.log(messageName + " = " + inviteName); }
+                        if (debug) { console.log(messageName + ' = ' + inviteName); }
                         
                         /** Check if the person is currently online **/
                         var onlineButton = findSubClass(element, isOnlineButton);
                         if (onlineButton) {
                             if (!onlineButton.hasChildNodes()) {
-                                if (debug) { console.log(inviteName + " is online!"); }
+                                if (debug) { console.log(inviteName + ' is online!'); }
                                 if (debug) { console.log(inviteElement); }
                                 if (debug) { console.log(elementId); }
                                 var button = findSubClass(inviteElement, buttonText);
                                 if (debug) { console.log(button); }
                                 if (button) {
-                                    console.log("Inviting " + inviteName + "...");
-                                    /* button.click(); */
+                                    console.log('Inviting ' + inviteName + '...');
+                                    button.click();
                                     /* Make sure that we do not exceed the maximum number of invites */
                                     invite_count++;
                                     if (invite_count >= max_invites) {
@@ -123,11 +123,11 @@ javascript: (function() {
                                     }
                                     await sleep(getRandomBetween(5000, 8000));
                                 } else {
-                                    if (debug) { console.log("Error: button is undefined (name: " + inviteName + ").") }
-                                    console.log(inviteName + " has already been invited.");
+                                    if (debug) { console.log('Error: button is undefined (name: ' + inviteName + ').') }
+                                    console.log(inviteName + ' has already been invited.');
                                 }
                             } else {
-                                console.log(inviteName + " is offline.");
+                                console.log(inviteName + ' is offline.');
                             }
                         }
                     }
