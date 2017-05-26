@@ -115,7 +115,7 @@ javascript: (function() {
                                 if (debug) { console.log(button); }
                                 if (button) {
                                     console.log("Inviting " + inviteName + "...");
-                                    /* button.click(); */
+                                    button.click();
                                     /* Make sure that we do not exceed the maximum number of invites */
                                     invite_count++;
                                     if (invite_count >= max_invites) {
